@@ -24,7 +24,7 @@ public class Radio {
         this.currentStation = newStation;
     }
 
-    public void increaseVolume(int currentVolume) {
+    public void increaseVolume() {
         int newVolume = 0;
         if (currentVolume == 10) {
             newVolume = 10;
@@ -35,7 +35,7 @@ public class Radio {
         setCurrentVolume(newVolume);
     }
 
-    public void decreaseVolume(int currentVolume) {
+    public void decreaseVolume() {
         int newVolume = 0;
         if (currentVolume == 0) {
             newVolume = 0;
@@ -43,13 +43,10 @@ public class Radio {
         if (currentVolume > 0) {
             newVolume = currentVolume - 1;
         }
-        if (currentVolume > 10) {  //этот код на случай если текущая громкость каким то образом окажется 11, тогда сеттер ее пропустит
-            return;
-        }
         setCurrentVolume(newVolume);
     }
 
-    public void nextStation(int currentStation) {
+    public void nextStation() {
         int newStation = 0;
         if (currentStation == 9) {
             newStation = 0;
@@ -60,16 +57,13 @@ public class Radio {
         setCurrentStation(newStation);
     }
 
-    public void prevStation(int currentStation) {
+    public void prevStation() {
         int newStation = 0;
         if (currentStation == 0) {
             newStation = 9;
         }
         if (currentStation > 0) {
             newStation = currentStation - 1;
-        }
-        if (currentStation > 9) {     //этот код на случай если текущая станция каким то образом будет равна 10, тогда сеттер ее пропустит
-            return;
         }
         setCurrentStation(newStation);
     }
