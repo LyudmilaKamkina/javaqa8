@@ -3,12 +3,22 @@ package ru.netology.javaqa;
 public class Radio {
     private int currentVolume;
     private int currentStation;
+    private int amountStations = 10;
+    private int maxVolume = 100;
+
+    public Radio(int amountStations) {
+        this.amountStations = amountStations;
+    }
+
+    public Radio() {
+
+    }
 
     public void setCurrentVolume(int newVolume) {
         if (newVolume < 0) {
             return;
         }
-        if (newVolume > 10) {
+        if (newVolume > maxVolume) {
             return;
         }
         this.currentVolume = newVolume;
@@ -18,7 +28,7 @@ public class Radio {
         if (newStation < 0) {
             return;
         }
-        if (newStation > 9) {
+        if (newStation > (amountStations - 1)) {
             return;
         }
         this.currentStation = newStation;
@@ -26,10 +36,10 @@ public class Radio {
 
     public void increaseVolume() {
         int newVolume = 0;
-        if (currentVolume == 10) {
-            newVolume = 10;
+        if (currentVolume == maxVolume) {
+            newVolume = maxVolume;
         }
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             newVolume = currentVolume + 1;
         }
         setCurrentVolume(newVolume);
@@ -48,10 +58,10 @@ public class Radio {
 
     public void nextStation() {
         int newStation = 0;
-        if (currentStation == 9) {
+        if (currentStation == (amountStations - 1)) {
             newStation = 0;
         }
-        if (currentStation < 9) {
+        if (currentStation < (amountStations - 1)) {
             newStation = currentStation + 1;
         }
         setCurrentStation(newStation);
@@ -60,7 +70,7 @@ public class Radio {
     public void prevStation() {
         int newStation = 0;
         if (currentStation == 0) {
-            newStation = 9;
+            newStation = (amountStations - 1);
         }
         if (currentStation > 0) {
             newStation = currentStation - 1;
@@ -69,10 +79,10 @@ public class Radio {
     }
 
     public int getCurrentVolume() {
-        return currentVolume;
+        return this.currentVolume;
     }
 
     public int getCurrentStation() {
-        return currentStation;
+        return this.currentStation;
     }
 }
